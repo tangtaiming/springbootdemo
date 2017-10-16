@@ -4,8 +4,7 @@ import com.example.demo.orm.User;
 import com.example.demo.repository.UserRepositoryCustom;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface UserDao extends MongoRepository<User, Integer>, UserRepositoryCustom<User> {
-
+public interface UserDao {
 
 
 }

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
  * @auther ttm
  * @date 2017/10/13
  */
-@Component
-public abstract class BaseDao<User> implements UserRepositoryCustom<User> {
+public abstract class BaseDao<User> {
 
 }

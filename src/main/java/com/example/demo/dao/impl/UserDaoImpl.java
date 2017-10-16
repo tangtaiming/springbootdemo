@@ -1,7 +1,6 @@
 package com.example.demo.dao.impl;
 
 import com.example.demo.orm.User;
-import com.example.demo.repository.UserRepositoryCustom;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
@@ -10,8 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -22,12 +20,10 @@ import java.util.regex.Pattern;
  * @auther ttm
  * @date 2017/9/5
  */
-@Component
-public class UserDaoImpl extends BaseDao<User> {
+public class UserDaoImpl {
 
     private Class<User> clazz;
 
-    @Autowired
     private final MongoOperations mongoOperations;
 
     public UserDaoImpl(MongoOperations mongoOperations) {
@@ -45,13 +41,11 @@ public class UserDaoImpl extends BaseDao<User> {
         }
     }
 
-    @Override
     public List<User> userList(Map<String, Object> request) {
         System.out.println("ttm | --> " + mongoOperations.toString());
         return null;
     }
 
-    @Override
     public User userOne(Map<String, Object> request) {
         System.out.println("ttm | --> " + clazz);
         Map<String, Object> query = (Map<String, Object>) request.get("query");
@@ -61,7 +55,6 @@ public class UserDaoImpl extends BaseDao<User> {
         return mongoOperations.findOne(myQuery, clazz);
     }
 
-    @Override
     public String userNextId() {
         String sequence_collection = "seq";
         String sequence_field = "seq";

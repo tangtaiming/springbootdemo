@@ -1,8 +1,6 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.dao.UserDao;
-import com.example.demo.dao.impl.UserDaoImpl;
-import com.example.demo.libraries.JsonHelper;
 import com.example.demo.orm.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +16,11 @@ import java.util.Map;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserDao userDao;
 
     @Override
     public boolean userSave(Map<String, Object> user) {
-        User users = (User) JsonHelper.fromJson(JsonHelper.toJson(user), User.class);
-        userDao.save(users);
+//        User users = (User) JsonHelper.fromJson(JsonHelper.toJson(user), User.class);
+//        userDao.save(users);
         return true;
     }
 
@@ -40,7 +36,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User userOne(Map<String, Object> query) {
-        return (User) userDao.userOne(query);
+//        return (User) userDao.userOne(query);
+        return null;
     }
 
     @Override
