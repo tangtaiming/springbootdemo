@@ -25,4 +25,6 @@ public interface UserService {
 
     public abstract Integer userNextId();
 
+    public abstract User userOne(int id);
+
 }

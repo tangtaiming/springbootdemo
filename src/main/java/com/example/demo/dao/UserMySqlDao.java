@@ -10,4 +10,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface UserMySqlDao extends JpaRepository<User, Integer>, UserMySqlRepositoryCustom {
 
+
+
 }

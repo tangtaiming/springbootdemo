@@ -1,18 +1,24 @@
 package com.example.demo;
 
+import com.example.demo.dao.TomtopShippingTemplateDao;
+import com.example.demo.dao.TomtopcomLanguageDao;
 import com.example.demo.dao.UserMySqlDao;
 import com.example.demo.libraries.JsonHelper;
-import com.example.demo.orm.TomtopProductStatus;
-import com.example.demo.orm.User;
+import com.example.demo.orm.*;
+import com.example.demo.service.TomtopOrderListService;
 import com.example.demo.service.TomtopProductStatusService;
+import com.example.demo.service.TomtopcomLanguageService;
 import com.example.demo.service.UserService;
+import com.netflix.discovery.converters.Auto;
 import org.apache.commons.collections.CollectionUtils;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,12 +35,45 @@ public class DemoApplicationTests {
 	@Autowired
 	private TomtopProductStatusService tomtopProductStatusService;
 
-	public void contextLoads() {
-		User user = userMySqlDao.findUser("root", "63a9f0ea7bb98050796b649e85481845");
-		System.out.println("ttm | " + JsonHelper.toJson(user));
-	}
+	@Autowired
+	private TomtopShippingTemplateDao shippingTemplateDao;
+
+	@Autowired
+	private TomtopOrderListService tomtopOrderListService;
+
+	@Autowired
+	private TomtopcomLanguageDao tomtopcomLanguageDao;
+
+	@Autowired
+	private TomtopcomLanguageService tomtopcomLanguageService;
 
 	@Test
+	public void tomtopShippingTemplateTest() {
+		TomtopcomLanguage tomtopcomLanguage = new TomtopcomLanguage();
+		List<LanguageId> languageIds = new ArrayList<>();
+		LanguageId en = new LanguageId();
+		en.setCode("en");
+		en.setLanguageid(1);
+		en.setName("English");
+//		LanguageId es = new LanguageId();
+//		es.setCode("fr");
+//		es.setLanguageid(5);
+//		es.setName("Français");
+		languageIds.add(en);
+//		languageIds.add(es);
+		tomtopcomLanguage.setId(4);
+		tomtopcomLanguage.setLanguageids(languageIds);
+		tomtopcomLanguage.setWebiste(15);
+		System.out.println("show data:" + JsonHelper.toJson(tomtopcomLanguage));
+		tomtopcomLanguageDao.save(tomtopcomLanguage);
+
+		System.out.println("show data : " + JsonHelper.toJson(tomtopcomLanguageService.tomtopLanguageList()));
+	}
+
+	public void contextLoads() {
+
+	}
+
 	public void testFormat() {
 		Map<String, Object> statusMap = tomtopProductStatusService.tomtopProductFormatList();
 		System.out.println("ttm | " + statusMap.toString());
