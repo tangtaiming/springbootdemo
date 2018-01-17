@@ -7,6 +7,7 @@ import com.example.demo.orm.User;
 import com.example.demo.service.TomtopProductStatusService;
 import com.example.demo.service.UserService;
 import org.apache.commons.collections.CollectionUtils;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 import java.util.Map;
 
+@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DemoApplication.class)
 public class DemoApplicationTests {
