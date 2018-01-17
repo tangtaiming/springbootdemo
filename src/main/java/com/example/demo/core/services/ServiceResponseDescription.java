@@ -1,6 +1,7 @@
 package com.example.demo.core.services;
 
 /**
+ * 描述静态类
  * @auther ttm
  * @date 2017/10/11
  */
