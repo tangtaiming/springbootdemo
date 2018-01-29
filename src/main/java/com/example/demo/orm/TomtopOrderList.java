@@ -68,6 +68,7 @@ public class TomtopOrderList {
     private String jobNumber;
     private String tag;		//订单类型
     private Double codCost;	//货到付款手续费
+    private Integer memberstatus;
 
     public Integer getId() {
         return id;
@@ -492,4 +493,12 @@ public class TomtopOrderList {
     public void setCodCost(Double codCost) {
         this.codCost = codCost;
     }
+
+	public Integer getMemberstatus() {
+		return memberstatus;
+	}
+
+	public void setMemberstatus(Integer memberstatus) {
+		this.memberstatus = memberstatus;
+	}
 }

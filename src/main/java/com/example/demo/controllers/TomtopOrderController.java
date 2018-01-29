@@ -1,16 +1,17 @@
 package com.example.demo.controllers;
 
-import com.example.demo.libraries.JsonHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.number.money.MonetaryAmountFormatter;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.example.demo.orm.TomtopOrderList;
 import com.example.demo.service.TomtopOrderListService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import javax.xml.bind.SchemaOutputResolver;
-import java.lang.reflect.MalformedParameterizedTypeException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @auther ttm
@@ -29,8 +30,10 @@ public class TomtopOrderController {
     }
 
     @RequestMapping(value = "/order/save", method = RequestMethod.GET)
-    public String orderSave() {
-        return "/order/add-order";
+    public ModelAndView orderSave() {
+    	ModelAndView view = new ModelAndView();
+    	view.setViewName("/order/add-order");
+        return view;
     }
 
     @RequestMapping(value = "/order/save", method = RequestMethod.POST)

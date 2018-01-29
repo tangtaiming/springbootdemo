@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@Ignore
+//@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DemoApplication.class)
 public class DemoApplicationTests {
@@ -56,15 +56,15 @@ public class DemoApplicationTests {
 		en.setCode("en");
 		en.setLanguageid(1);
 		en.setName("English");
-//		LanguageId es = new LanguageId();
-//		es.setCode("fr");
-//		es.setLanguageid(5);
-//		es.setName("Français");
+		LanguageId es = new LanguageId();
+		es.setCode("fr");
+		es.setLanguageid(5);
+		es.setName("Français");
 		languageIds.add(en);
-//		languageIds.add(es);
-		tomtopcomLanguage.setId(4);
+		languageIds.add(es);
+		tomtopcomLanguage.setId(6);
 		tomtopcomLanguage.setLanguageids(languageIds);
-		tomtopcomLanguage.setWebiste(15);
+		tomtopcomLanguage.setWebiste(4);
 		System.out.println("show data:" + JsonHelper.toJson(tomtopcomLanguage));
 		tomtopcomLanguageDao.save(tomtopcomLanguage);
 

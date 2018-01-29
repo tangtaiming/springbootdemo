@@ -11,12 +11,11 @@ import java.util.Map;
  * @date 2017/10/26
  */
 @Controller
-@RequestMapping(value = "/v1")
 public class IndexController {
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "/v1/index", method = RequestMethod.GET)
     public String index(Map<String, Object> view) {
-        return "/admin/index";
+        return "welcome";
     }
 
 }
