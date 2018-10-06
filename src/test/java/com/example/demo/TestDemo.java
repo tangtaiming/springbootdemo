@@ -13,12 +13,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @auther ttm
  * @date 2017/10/25
  */
 public class TestDemo {
+
+    public boolean match(String lineText) {
+        String ma = "\\[WARN\\]{1,}\\s{1}[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\\s{1}[\\w]{1,}";
+        Pattern pattern = Pattern.compile(ma);
+        Matcher matcher = pattern.matcher(lineText);
+        return matcher.find();
+    }
+
+    public void
 
     @Test
     public void contextLoads() throws IOException {
