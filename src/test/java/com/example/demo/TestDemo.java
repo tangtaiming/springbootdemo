@@ -29,8 +29,6 @@ public class TestDemo {
         return matcher.find();
     }
 
-    public void
-
     @Test
     public void contextLoads() throws IOException {
         File file = new File("D:\\19.txt");
