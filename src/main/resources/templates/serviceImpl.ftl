@@ -117,7 +117,7 @@ public class ${beanName}ServiceImpl implements ${beanName}Service {
 			return Boolean.FALSE;
 		}
 		if (bean.getId() == null) {
-			bean.setId(${idClassName}.valueOf(${beanLowercaseName}Dao.getNextId()));
+			bean.setId(${idClassName}.valueOf(${beanLowercaseName}Dao.getNextId(${beanName}.class.getName())));
 		}
 		return ${beanLowercaseName}Dao.saveOrUpdate(bean);
 	}
