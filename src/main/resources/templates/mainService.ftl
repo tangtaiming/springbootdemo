@@ -36,12 +36,14 @@ package ${basePackage}.service;
 </#if>
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.collections.CollectionUtils;
+
+import com.tomtop.system.service.RestBasicServiceArgs;
+import com.tomtop.system.service.ServiceResult;
 
 <#if attributeClassNames?? && (attributeClassNames?size > 0) >
     <#list attributeClassNames as attributeClassName >
@@ -49,7 +51,7 @@ import ${attributeClassName};
     </#list>
 </#if>
 
-public class ${beanName}MainService extends TomtopDaoBasicService {
+public class ${beanName}MainService extends RestBasicServiceArgs {
 
 	private static final String FETCH_BEAN_COLLECTION = "/${subPackage}/fetch${beanName}Collection";
 	private static final String FETCH_BEAN_BY_ID = "/${subPackage}/fetch${beanName}ById";
@@ -66,9 +68,7 @@ public class ${beanName}MainService extends TomtopDaoBasicService {
 	public ${beanName} fetchById(String id) {
 		String url = FETCH_BEAN_BY_ID + "/" + id;
 		setServiceEntry(url);
-		@SuppressWarnings("unchecked")
-		Map${leftAngle}String, Object${rightAngle} result = (Map${leftAngle}String, Object${rightAngle}) request();
-		return _mapTo${beanName}(result);
+        return (${beanName}) request(null, ${beanName}.class);
 	}
 
 	public Map${leftAngle}String, Object${rightAngle} fetch${beanName}Collection(Map${leftAngle}String, Object${rightAngle} query) {
@@ -76,7 +76,7 @@ public class ${beanName}MainService extends TomtopDaoBasicService {
         Map${leftAngle}String, Object${rightAngle} data = getCollection(query);
         @SuppressWarnings("unchecked")
 		List${leftAngle}Map${leftAngle}String, Object${rightAngle}${rightAngle} lists = (List${leftAngle}Map${leftAngle}String, Object${rightAngle}${rightAngle}) data.get("collection");
-        List${leftAngle}${beanName}${rightAngle} beanList = new LinkedList${leftAngle}${rightAngle}();
+        List${leftAngle}${beanName}${rightAngle} beanList = new ArrayList${leftAngle}${rightAngle}();
         if (CollectionUtils.isNotEmpty(lists)) {
         	for (Map${leftAngle}String, Object${rightAngle} map : lists) {
         		beanList.add(_mapTo${beanName}(map));
@@ -111,18 +111,20 @@ public class ${beanName}MainService extends TomtopDaoBasicService {
 		if (bean == null) {
 			return Boolean.FALSE;
 		}
+
 		setServiceEntry(SAVE_OR_UPDATE_BEAN);
-		setServiceRequestCreate(bean);
-		request();
-	    return checkSuccess();
+		String saveOrUpdate = getServiceRequestCreate(bean);
+		ServiceResult serviceResult = execute(saveOrUpdate);
+		return serviceResult.checkSuccess();
 	}
 </#if>
 
 	public Boolean delete(${idClassName} id) {
-		 String url = DELETE_BEAN_BY_ID + "/" + id;
-		 setServiceEntry(url);
-		 request();
-		 return checkSuccess();
+		String url = DELETE_BEAN_BY_ID + "/" + id;
+		setServiceEntry(url);
+		ServiceResult serviceResult = execute(null);
+
+		return serviceResult.checkSuccess();
 	}
 
 	public List${leftAngle}${beanName}${rightAngle} fetch${beanName}List(Map${leftAngle}String, Object${rightAngle} query, Map${leftAngle}String, Object${rightAngle} sort, Map${leftAngle}String, Object${rightAngle} pagination) {
@@ -133,15 +135,10 @@ public class ${beanName}MainService extends TomtopDaoBasicService {
             }
             queryFlat.remove("id");
         }
-        setServiceEntry(FETCH_BEAN_LIST);
-        setServiceRequestQuery(queryFlat, sort, pagination);
-        List${leftAngle}Map${leftAngle}String, Object${rightAngle}${rightAngle} result = requestList();
-        List${leftAngle}${beanName}${rightAngle} results = new LinkedList${leftAngle}${rightAngle}();
-        if (null != result) {
-            for (Map${leftAngle}String, Object${rightAngle} data: result) {
-            	results.add(_mapTo${beanName}(data));
-            }
-        }
+
+		setServiceEntry(FETCH_BEAN_LIST);
+        String serviceRequest = getServiceRequestQuery(queryFlat, sort, pagination);
+        List${leftAngle}${beanName}${rightAngle} results = (List${leftAngle}${beanName}${rightAngle}) requestList(serviceRequest, ${beanName}.class);
         return results;
 	}
 
@@ -153,12 +150,13 @@ public class ${beanName}MainService extends TomtopDaoBasicService {
             }
             queryFlat.remove("id");
         }
-        setServiceEntry(FETCH_BEAN_COUNT);
-        setServiceRequestQuery(queryFlat, null, null);
-        Object result = request();
+
+		setServiceEntry(FETCH_BEAN_COUNT);
+        String serviceRequest =  getServiceRequestQuery(queryFlat, null, null);
+        Object result = request(serviceRequest);
         Long count = 0L;
         if (null != result) {
-        	count = Long.valueOf(result.toString());
+            count = Long.valueOf(result.toString());
         }
         return count;
 	}
@@ -169,7 +167,7 @@ public class ${beanName}MainService extends TomtopDaoBasicService {
 	private ${beanName} _mapTo${beanName}(Map${leftAngle}String, Object${rightAngle} result) {
 		if (result != null) {
 			try {
-${beanName} bean = new ${beanName}();
+				${beanName} bean = new ${beanName}();
 				BeanUtils.populate(bean, result);
 <#if complexAttributes?? && (complexAttributes?size > 0) >
     <#list complexAttributes as complexAttribute >

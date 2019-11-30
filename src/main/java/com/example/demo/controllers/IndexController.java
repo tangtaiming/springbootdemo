@@ -15,6 +15,7 @@ public class IndexController {
 
     @RequestMapping(value = "/v1/index", method = RequestMethod.GET)
     public String index(Map<String, Object> view) {
+
         return "welcome";
     }
 

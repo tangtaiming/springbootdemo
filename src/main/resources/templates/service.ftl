@@ -44,7 +44,7 @@ public interface ${beanName}Service {
 
 	Long fetch${beanName}Count(Map${leftAngle}String, Object${rightAngle} query);
 
-${beanName} fetchById(${idClassName} id);
+	${beanName} fetchById(${idClassName} id);
 
 	Boolean saveOrUpdate(Map${leftAngle}String, Object${rightAngle} query);
 

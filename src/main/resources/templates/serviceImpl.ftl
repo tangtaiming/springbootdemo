@@ -150,6 +150,8 @@ public class ${beanName}ServiceImpl implements ${beanName}Service {
 </#if>
 	}
 
+
+
 <#if type!="hibernate" >
     <#if complexAttributes?? && (complexAttributes?size > 0) >
 	@SuppressWarnings("unchecked")
