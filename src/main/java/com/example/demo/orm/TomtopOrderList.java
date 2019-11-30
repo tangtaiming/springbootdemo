@@ -1,7 +1,5 @@
 package com.example.demo.orm;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import javax.persistence.Id;
 import java.util.Date;
 import java.util.List;
@@ -10,7 +8,6 @@ import java.util.List;
  * @auther ttm
  * @date 2017/11/23
  */
-@Document
 public class TomtopOrderList {
 
     @Id

@@ -42,8 +42,8 @@ public class DemoApplicationTests {
 	@Autowired
 	private TomtopOrderListService tomtopOrderListService;
 
-	@Autowired
-	private TomtopcomLanguageDao tomtopcomLanguageDao;
+//	@Autowired
+//	private TomtopcomLanguageDao tomtopcomLanguageDao;
 
 	@Autowired
 	private TomtopcomLanguageService tomtopcomLanguageService;
@@ -66,9 +66,9 @@ public class DemoApplicationTests {
 		tomtopcomLanguage.setLanguageids(languageIds);
 		tomtopcomLanguage.setWebiste(4);
 		System.out.println("show data:" + JsonHelper.toJson(tomtopcomLanguage));
-		tomtopcomLanguageDao.save(tomtopcomLanguage);
+//		tomtopcomLanguageDao.save(tomtopcomLanguage);
 
-		System.out.println("show data : " + JsonHelper.toJson(tomtopcomLanguageService.tomtopLanguageList()));
+//		System.out.println("show data : " + JsonHelper.toJson(tomtopcomLanguageService.tomtopLanguageList()));
 	}
 
 	public void contextLoads() {

@@ -1,7 +1,5 @@
 package com.example.demo.orm;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
 /**
  * @auther ttm
  * @date 2017/12/5

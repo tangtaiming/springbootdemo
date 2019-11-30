@@ -11,8 +11,8 @@ import java.util.List;
  */
 public interface TomtopcomLanguageService {
 
-    public List<TomtopcomLanguageResponse> tomtopLanguageList();
-
-    public List<TomtopcomLanguageResponse> tomtopLanuageListByWebsite(Integer website);
+//    public List<TomtopcomLanguageResponse> tomtopLanguageList();
+//
+//    public List<TomtopcomLanguageResponse> tomtopLanuageListByWebsite(Integer website);
 
 }

@@ -20,26 +20,26 @@ import com.example.demo.service.TomtopOrderListService;
 @Controller
 public class TomtopOrderController {
 
-    @Autowired
-    private TomtopOrderListService tomtopOrderListService;
-
-    @RequestMapping(value = "/checkout/{itemId}/getOrder", method = RequestMethod.GET)
-    @ResponseBody
-    public TomtopOrderList orderSingle(@PathVariable String itemId) {
-        return tomtopOrderListService.tomtopOrderListOne(itemId);
-    }
-
-    @RequestMapping(value = "/order/save", method = RequestMethod.GET)
-    public ModelAndView orderSave() {
-    	ModelAndView view = new ModelAndView();
-    	view.setViewName("/order/add-order");
-        return view;
-    }
-
-    @RequestMapping(value = "/order/save", method = RequestMethod.POST)
-    public String orderSave(@RequestParam(value = "order") String order) {
-        tomtopOrderListService.tomtopOrderListSave(order);
-        return "/order/add-order";
-    }
+//    @Autowired
+//    private TomtopOrderListService tomtopOrderListService;
+//
+//    @RequestMapping(value = "/checkout/{itemId}/getOrder", method = RequestMethod.GET)
+//    @ResponseBody
+//    public TomtopOrderList orderSingle(@PathVariable String itemId) {
+//        return tomtopOrderListService.tomtopOrderListOne(itemId);
+//    }
+//
+//    @RequestMapping(value = "/order/save", method = RequestMethod.GET)
+//    public ModelAndView orderSave() {
+//    	ModelAndView view = new ModelAndView();
+//    	view.setViewName("/order/add-order");
+//        return view;
+//    }
+//
+//    @RequestMapping(value = "/order/save", method = RequestMethod.POST)
+//    public String orderSave(@RequestParam(value = "order") String order) {
+//        tomtopOrderListService.tomtopOrderListSave(order);
+//        return "/order/add-order";
+//    }
 
 }

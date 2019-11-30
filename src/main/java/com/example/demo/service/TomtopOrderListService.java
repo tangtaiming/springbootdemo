@@ -8,8 +8,8 @@ import com.example.demo.orm.TomtopOrderList;
  */
 public interface TomtopOrderListService {
 
-    public boolean tomtopOrderListSave(String orderStr);
-
-    public TomtopOrderList tomtopOrderListOne(String itemId);
+//    public boolean tomtopOrderListSave(String orderStr);
+//
+//    public TomtopOrderList tomtopOrderListOne(String itemId);
 
 }
