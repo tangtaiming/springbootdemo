@@ -21,7 +21,7 @@ public class QiniuUploadController {
 
     @RequestMapping(value = "/upload")
     @ResponseBody
-    public void upload(@RequestParam("upload") MultipartFile file, @RequestParam("CKEditorFuncNum") String cKEditorFuncNum, HttpServletResponse response) {
+    public void upload(@RequestParam("upload") MultipartFile file, HttpServletResponse response) {
         System.out.println("file = " + file.getOriginalFilename());
         PrintWriter out = null;
         try {
@@ -61,14 +61,14 @@ public class QiniuUploadController {
 
         String url = "http://127.0.0.1:8080/static/images/upload/" + newFileName;
 
-//        String success = FileResponseHelper.success(1, newFileName, url, "success");
-//        out.print(success);
+        String success = FileResponseHelper.success(1, newFileName, url, "success");
+        out.print(success);
 
         // 返回"图像"选项卡并显示图片  request.getContextPath()为web项目名
-        out.print("<script type=\"text/javascript\">");
-        out.print("window.parent.CKEDITOR.tools.callFunction(" + cKEditorFuncNum
-                + ",'" + url + "','')");
-        out.print("</script>");
+//        out.print("<script type=\"text/javascript\">");
+//        out.print("window.parent.CKEDITOR.tools.callFunction(" + cKEditorFuncNum
+//                + ",'" + url + "','')");
+//        out.print("</script>");
 //        System.out.println("path:"+path.getAbsolutePath());
 //        return "/qiniu/success";
     }
