@@ -17,7 +17,9 @@
 <script type="application/javascript" src="/static/plugins/ckeditor_4.7.0_full/ckeditor.js"></script>
 <script type="application/javascript">
     CKEDITOR.replace("ck", {
-        filebrowserBrowseUrl: '/qiniu/service?type=Files',
-        filebrowserUploadUrl: '/qiniu/upload'
+        uploadUrl:'/qiniu/upload?type=Files&responseType=json',
+        filebrowserBrowseUrl: '/qiniu/service?type=Files&responseType=json',
+        // filebrowserUploadUrl: '/qiniu/upload?type=Files&responseType=json'
+        filebrowserUploadUrl: '/qiniu/upload',
     });
 </script>
