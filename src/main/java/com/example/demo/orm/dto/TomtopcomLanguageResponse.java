@@ -1,7 +1,5 @@
 package com.example.demo.orm.dto;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.util.List;
 
 /**
