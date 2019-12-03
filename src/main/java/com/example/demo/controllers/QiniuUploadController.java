@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.libraries.FileResponseHelper;
+import com.example.demo.libraries.QiniuCloudHelper;
 import org.apache.commons.io.FileUtils;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,6 +64,8 @@ public class QiniuUploadController {
 
         String url = "http://127.0.0.1:8080/static/images/upload/" + newFileName;
 
+        QiniuCloudHelper qiniuCloudHelper = new QiniuCloudHelper();
+        qiniuCloudHelper.upload(newfile, "static/images/upload/" + newFileName);
         String success = FileResponseHelper.success(1, newFileName, url, "");
         out.print(success);
     }
