@@ -45,7 +45,9 @@ public class QiniuUploadController {
         try {
             path = new File(ResourceUtils.getURL("classpath:").getPath());
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            String error = FileResponseHelper.error(0, "无状态异常-1");
+            out.print(error);
         }
         String newFileName = "up-" + System.currentTimeMillis() + "." + picSuffix;
         String newfile = path.getAbsolutePath() + "\\static\\images\\upload\\" + newFileName;
@@ -55,22 +57,14 @@ public class QiniuUploadController {
             FileUtils.copyInputStreamToFile(file.getInputStream(), newf);
         } catch (IOException e) {
 //            e.printStackTrace();
-            String error = FileResponseHelper.error(0, "无状态异常");
+            String error = FileResponseHelper.error(0, "无状态异常-2");
             out.print(error);
         }
 
         String url = "http://127.0.0.1:8080/static/images/upload/" + newFileName;
 
-        String success = FileResponseHelper.success(1, newFileName, url, "success");
+        String success = FileResponseHelper.success(1, newFileName, url, "");
         out.print(success);
-
-        // 返回"图像"选项卡并显示图片  request.getContextPath()为web项目名
-//        out.print("<script type=\"text/javascript\">");
-//        out.print("window.parent.CKEDITOR.tools.callFunction(" + cKEditorFuncNum
-//                + ",'" + url + "','')");
-//        out.print("</script>");
-//        System.out.println("path:"+path.getAbsolutePath());
-//        return "/qiniu/success";
     }
 
     /*

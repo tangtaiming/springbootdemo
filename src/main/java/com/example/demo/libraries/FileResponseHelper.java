@@ -19,7 +19,7 @@ public class FileResponseHelper {
 
     public static String success(int code, String fileName, String url, String msg) {
         Map<String, Object> response = new HashMap<>();
-        if (StringUtils.isEmpty(msg)) {
+        if (StringUtils.isNotEmpty(msg)) {
             Map<String, Object> msgMap = new HashMap<>();
             msgMap.put("message", msg);
             response.put("error", msgMap);
