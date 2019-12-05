@@ -17,7 +17,7 @@ import com.example.demo.service.TomtopOrderListService;
  * @auther ttm
  * @date 2017/11/23
  */
-@Controller
+//@Controller
 public class TomtopOrderController {
 
 //    @Autowired

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @auther ttm
  * @date 2017/10/16
  */
-@RestController
+//@RestController
 public class TomtopApiController {
 
 //    @Autowired

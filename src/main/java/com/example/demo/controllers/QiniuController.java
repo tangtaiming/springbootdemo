@@ -37,6 +37,11 @@ public class QiniuController {
         return "/qiniu/success";
     }
 
+    @RequestMapping(value = "/wangEditor", method = RequestMethod.GET)
+    public String wangEditor() {
+        return "/qiniu/wangEditor";
+    }
+
 //    @RequestMapping(value = "/upload", method = RequestMethod.POST)
 //    @ResponseBody
 //    public void upload(@RequestParam("upload") MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
