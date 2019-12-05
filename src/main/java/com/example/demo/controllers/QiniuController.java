@@ -1,28 +1,8 @@
 package com.example.demo.controllers;
 
-import com.example.demo.libraries.FileResponseHelper;
-import org.apache.commons.io.FileUtils;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.FileCopyUtils;
-import org.springframework.util.FileSystemUtils;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
 
 @Controller
 @RequestMapping("qiniu")
@@ -41,6 +21,20 @@ public class QiniuController {
     @RequestMapping(value = "service", method = RequestMethod.GET)
     public String service() {
         return "/qiniu/service";
+    }
+
+    /**
+     * ueditor 富文本上传
+     *
+     */
+    @RequestMapping(value = "/ueditor", method = RequestMethod.GET)
+    public String ueditor() {
+        return "/qiniu/ueditor";
+    }
+
+    @RequestMapping(value = "/doService")
+    public String doService() {
+        return "/qiniu/success";
     }
 
 //    @RequestMapping(value = "/upload", method = RequestMethod.POST)
