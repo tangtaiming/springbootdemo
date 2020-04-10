@@ -7,6 +7,7 @@ import com.example.demo.http.api.request.ErpDaoRequest;
 import com.example.demo.http.api.response.ErpDaoResponse;
 import com.example.demo.orm.sale.pinduoduo.PinDuoDuoApiConfig;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

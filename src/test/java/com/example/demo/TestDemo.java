@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import com.example.demo.libraries.JsonHelper;
+import com.example.demo.libraries.JsonUtil;
+import com.example.demo.orm.sale.pinduoduo.PinDuoDuoApiConfig;
 import com.example.demo.service.PinDuoDuoApiService;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.StringUtils;
@@ -8,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.yaml.snakeyaml.DumperOptions;
 
 import java.io.*;
 import java.text.DecimalFormat;
@@ -67,7 +70,8 @@ public class TestDemo {
         page.put("pageSize", 20);
         PinDuoDuoApiService pinDuoDuoApiService = new PinDuoDuoApiService();
         try {
-            pinDuoDuoApiService.fetchPinDuoDuoApiConfigList(query, sort, page);
+            List<PinDuoDuoApiConfig> pinDuoDuoApiConfigList = pinDuoDuoApiService.fetchPinDuoDuoApiConfigList(query, sort, page);
+            System.out.println("JSON = " + JsonUtil.transferToJson(pinDuoDuoApiConfigList));
         } catch (Exception e) {
             e.printStackTrace();
         }

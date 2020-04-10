@@ -1,6 +1,7 @@
 package com.example.demo.http.api.request;
 
 import com.example.demo.http.ErpBaseHttpRequest;
+import com.example.demo.http.ErpBaseHttpResponse;
 import com.example.demo.http.api.response.ErpDaoResponse;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

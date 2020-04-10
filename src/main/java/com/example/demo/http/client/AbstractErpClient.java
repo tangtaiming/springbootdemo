@@ -9,7 +9,10 @@ import com.example.demo.libraries.IOSupport;
 import com.example.demo.libraries.JsonUtil;
 import com.qiniu.util.Json;
 import org.apache.commons.lang.StringUtils;
+import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.springframework.util.CollectionUtils;
 
@@ -38,11 +41,12 @@ public abstract class AbstractErpClient extends HttpExecutor implements ErpClien
         System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^lion " + Json.encode(request));
         HttpPost httpPost = new HttpPost(requestUrl);
         if (!CollectionUtils.isEmpty(request.getHeaders())) {
-            request.getHeaders().entrySet();
             for (Map.Entry<String, String> entry : request.getHeaders().entrySet()) {
                 httpPost.setHeader(entry.getKey(), entry.getValue());
             }
         }
+        HttpEntity httpEntity = new StringEntity(JsonUtil.transferToJson(request), ContentType.APPLICATION_JSON);
+        httpPost.setEntity(httpEntity);
 
         String responseContent = syncExecute(httpClient, httpPost);
         return JsonUtil.transferToObj(responseContent, request.getResponseClass());
