@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.libraries.JsonHelper;
+import com.example.demo.service.PinDuoDuoApiService;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
@@ -32,21 +33,44 @@ public class TestDemo {
     }
 
     public static void main(String[] args) {
-        DecimalFormat df = new DecimalFormat("0.0000");
-        Double tmpProductPrice = 12d;
-        Double tomtpPrice = 2d;
-        String changeValue12 = "12.00";
-        String changeRate1 = "0.01";
+//        DecimalFormat df = new DecimalFormat("0.0000");
+//        Double tmpProductPrice = 12d;
+//        Double tomtpPrice = 2d;
+//        String changeValue12 = "12.00";
+//        String changeRate1 = "0.01";
+//
+//        Double changeValue = tmpProductPrice - tomtpPrice;
+//        Double changeRate = changeValue / tmpProductPrice;
+//        String cv = df.format(Math.abs(changeValue));
+//        String cr = df.format(Math.abs(changeRate));
+//        if (changeValue12.compareTo(cv) >= 0 && changeRate1.compareTo(cr) >= 0) {
+//            return;
+//        }
+//
+//        System.out.println("tomtop = " + tmpProductPrice);
 
-        Double changeValue = tmpProductPrice - tomtpPrice;
-        Double changeRate = changeValue / tmpProductPrice;
-        String cv = df.format(Math.abs(changeValue));
-        String cr = df.format(Math.abs(changeRate));
-        if (changeValue12.compareTo(cv) >= 0 && changeRate1.compareTo(cr) >= 0) {
-            return;
+//        int pageSize = 20;
+//        Integer totalCount = null;
+//        Integer totalPage = (totalCount + pageSize - 1) / pageSize;
+
+//        String skuStr = "IF1019-36";
+//        if (StringUtils.indexOf(skuStr, "*") > 0) {
+//            String currentSku = StringUtils.substring(skuStr, 0, StringUtils.indexOf(skuStr, "*"));
+//            System.out.println("currentSku = " + currentSku);
+//        }
+
+        Map<String, Object> query = new HashMap<>();
+        Map<String, Object> sort = new HashMap<>();
+        sort.put("id", "desc");
+        Map<String, Object> page = new HashMap<>();
+        page.put("pageNumber", 1);
+        page.put("pageSize", 20);
+        PinDuoDuoApiService pinDuoDuoApiService = new PinDuoDuoApiService();
+        try {
+            pinDuoDuoApiService.fetchPinDuoDuoApiConfigList(query, sort, page);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        System.out.println("tomtop = " + tmpProductPrice);
     }
 
   @Test

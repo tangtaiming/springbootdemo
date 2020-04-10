@@ -9,7 +9,7 @@
     <#if supports??>
         <#list supports as support>
             <#if !(support=="dao" && type=="hibernate") && !(support=="repository" && type=="mongodb") >
-<a href="/code/show?beanName=${beanClassName}&freemark=${support}&type=${type}">${support}</a>
+<a href="/code/show?beanName=${beanClassName}&freemark=${support}&type=${type}&subPackage=${subPackage}">${support}</a>
             </#if>
         </#list>
     </#if>
